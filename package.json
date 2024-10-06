@@ -1,0 +1,47 @@
+{
+  "name": "logger-issues",
+  "version": "0.0.1",
+  "description": "My TypeScript Library",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "keywords": [
+    "typescript",
+    "library"
+  ],
+  "author": "JanselLopez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JanselLopez/logger-issues"
+  },
+  "bugs": {
+    "url": "https://github.com/JanselLopez/logger-issues/issues"
+  },
+  "homepage": "https://github.com/JanselLopez/logger-issues#readme",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "octokit": "^4.0.2"
+  }
+}
