@@ -7,7 +7,7 @@ Easy way to handle logs, warnings, and errors, with the ability to create GitHub
 ```ts
 import Loggers from 'logger-issues'
 
-const Log = new Loggers.GiteaLogger(
+const Log = new Loggers.GithubLogger(
 	"token",//Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
 	"owner",//GITEA_REPO_OWNER
 	"repo_name",//GITEA_REPO_NAME

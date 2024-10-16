@@ -1,6 +1,6 @@
 {
   "name": "logger-issues",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Easy way to handle logs, warnings, and errors, with the ability to create GitHub/Gitea issues automatically in production environments",
   "type": "module",
   "main": "dist/index.js",
