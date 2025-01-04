@@ -9,8 +9,8 @@ import Loggers from 'logger-issues'
 
 const Log = new Loggers.GithubLogger(
 	"token",//Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
-	"owner",//GITEA_REPO_OWNER
-	"repo_name",//GITEA_REPO_NAME
+	"owner",//GITHUB_REPO_OWNER
+	"repo_name",//GITHUB_REPO_NAME
 	true,//isInProduction
 	(error)=>{
 		console.error("ON_ERROR",{error})

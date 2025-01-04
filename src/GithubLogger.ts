@@ -1,3 +1,4 @@
+import { Octokit } from "octokit";
 import { LogData, Route } from "./@types";
 import Logger from "./Logger";
 
@@ -42,7 +43,7 @@ class GithubLogger extends Logger {
         data,
         routes
       );
-      const { Octokit } = await import("octokit");
+
       const octokit = new Octokit({ auth: this.token });
       await octokit.rest.issues.create({
         owner: this.repoOwner,
