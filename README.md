@@ -9,20 +9,20 @@ Easy way to handle logs, warnings, and errors, with the ability to create GitHub
 You can use classic or fine-grained github tokens
 
 #### Classic token 
-1- Access to this url
+1. Access to this url
 [https://github.com/settings/tokens/new?scopes=repo](https://github.com/settings/tokens/new?scopes=repo)
-2- Write a "Note" for the token
-3-Select "No expiration"
+2. Write a "Note" for the token
+3. Select "No expiration"
 ![enter image description here](https://raw.githubusercontent.com/JanselLopez/logger-issues/refs/heads/main/Screenshot%202025-01-04%20173100.png)
-4- Press "Generate token"
+4. Press "Generate token"
 
 #### Fine-grained token (Preview)
-1- Access to this url
+1. Access to this url
 [https://github.com/settings/personal-access-tokens/new](https://github.com/settings/personal-access-tokens/new)
-2- Set the token name
-3- Select "No expiration"
+2. Set the token name
+3. Select "No expiration"
 ![enter image description here](https://raw.githubusercontent.com/JanselLopez/logger-issues/refs/heads/main/Screenshot%202025-01-04%20171922.png)
-4- Select "Read and write" permission to issues. (Permissions/Repository permissions/Issues)
+4. Select "Read and write" permission to issues. (Permissions/Repository permissions/Issues)
 ![enter image description here](https://raw.githubusercontent.com/JanselLopez/logger-issues/refs/heads/main/Screenshot%202025-01-04%20171139.png)5- Press "Generate token"
 
 #### Instantiate
