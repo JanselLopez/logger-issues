@@ -1,4 +1,3 @@
-import { Octokit } from "octokit";
 import { LogData, Route } from "./@types";
 import Logger from "./Logger";
 
@@ -43,16 +42,23 @@ class GithubLogger extends Logger {
         data,
         routes
       );
-
-      const octokit = new Octokit({ auth: this.token });
-      await octokit.rest.issues.create({
-        owner: this.repoOwner,
-        repo: this.repoName,
-        title: issueTitle,
-        body: issueBody,
-        assignees: [this.repoOwner],
-        labels,
-      });
+      await fetch(
+        `https://api.github.com/repos/${this.repoOwner}/${this.repoName}/issues`,
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `token ${this.token}`
+          },
+          body: JSON.stringify({
+            title: issueTitle,
+            body: issueBody,
+            assignees: [this.repoOwner],
+            labels,
+          }),
+        }
+      );
     } catch (error) {
       console.error(
         "GITHUB_LOGGER: ERROR_CREATING_ISSUE: ",
