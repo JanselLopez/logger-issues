@@ -39,7 +39,7 @@ class GiteaLogger extends Logger {
   }) {
     const {title:issueTitle,body:issueBody} = this.generateTitleAndBody(title, body,data,routes)
     try {
-      await fetch(
+      const res = await fetch(
         `https://${this.host}/api/v1/repos/${this.repoOwner}/${this.repoName}/issues?access_token=${this.token}`,
         {
           method: "POST",
@@ -54,6 +54,26 @@ class GiteaLogger extends Logger {
           }),
         }
       );
+      const dataIssue = (await res.json()) as any;
+      const aiAnswer = await this.ai(`
+        ${issueTitle}\n
+        ${issueBody}
+      `);
+      if (aiAnswer) {
+        await fetch(
+          `https://${this.host}/api/v1/repos/${this.repoOwner}/${this.repoName}/issues/${dataIssue?.number}/comments?access_token=${this.token}`,
+          {
+            method: "POST",
+            headers: {
+              accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              body: aiAnswer,
+            }),
+          }
+        );
+      }
     } catch (error) {
       console.error(
         "GITEA_LOGGER: ERROR_CREATING_ISSUE: ",

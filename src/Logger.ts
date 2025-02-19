@@ -181,6 +181,35 @@ abstract class Logger {
       await this.issue({ title: label + ` ${time}`, body: time });
     }
   }
+  async ai(content:string):Promise<string|undefined> {
+    const resAi = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer ",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "meta-llama/llama-3.3-70b-instruct:free",
+          messages: [
+            {
+              role: "system",
+              content:
+                "Act as an expert troubleshooter and problem-solving assistant in a javascript project. Your role is to analyze issues described by users and provide clear, actionable solutions",
+            },
+            {
+              role: "user",
+              content
+            },
+          ],
+        }),
+      }
+    );
+    const dataAi = (await resAi.json()) as any;
+    return dataAi?.choices?.[0]?.message?.content
+  }
   abstract issue(params: {
     title: any;
     body: any;

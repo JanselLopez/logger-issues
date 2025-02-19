@@ -42,14 +42,14 @@ class GithubLogger extends Logger {
         data,
         routes
       );
-      await fetch(
+      const res = await fetch(
         `https://api.github.com/repos/${this.repoOwner}/${this.repoName}/issues`,
         {
           method: "POST",
           headers: {
             accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `token ${this.token}`
+            Authorization: `token ${this.token}`,
           },
           body: JSON.stringify({
             title: issueTitle,
@@ -59,6 +59,27 @@ class GithubLogger extends Logger {
           }),
         }
       );
+      const dataIssue = (await res.json()) as any;
+      const aiAnswer = await this.ai(`
+        ${issueTitle}\n
+        ${issueBody}
+      `);
+      if (aiAnswer) {
+        await fetch(
+          `https://api.github.com/repos/${this.repoOwner}/${this.repoName}/issues/${dataIssue?.number}/comments`,
+          {
+            method: "POST",
+            headers: {
+              accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `token ${this.token}`,
+            },
+            body: JSON.stringify({
+              body: aiAnswer,
+            }),
+          }
+        );
+      }
     } catch (error) {
       console.error(
         "GITHUB_LOGGER: ERROR_CREATING_ISSUE: ",

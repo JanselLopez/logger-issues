@@ -1,7 +1,7 @@
 {
   "name": "logger-issues",
-  "version": "0.0.41",
-  "description": "Easy way to handle logs, warnings, and errors, with the ability to create GitHub/Gitea issues automatically in production environments",
+  "version": "0.0.42",
+  "description": "Easy way to handle logs, warnings, and errors, with the ability to create GitHub/Gitea issues automatically in production environments and receive AI-Powered feedback",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -46,8 +46,5 @@
     "@types/node": "^22.7.4",
     "tsup": "^8.3.0",
     "typescript": "^5.6.2"
-  },
-  "dependencies": {
-    "octokit": "^4.0.2"
   }
 }
